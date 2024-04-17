@@ -14,10 +14,12 @@ const config: Config = {
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
       colors: {
-        "background": "#1a1a1a",
+        "background": "#060606",
+        "background-secondary": "#1a1a1a",
         "primary-foreground": "#fff",
         "secondary-foreground": "#333",
-        "border": "#ddd"
+        "border": "#ddd",
+        "background-hover": "#1a1a1a"
       }
     },
   },

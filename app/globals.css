@@ -11,3 +11,11 @@
 body {
   @apply bg-background text-primary-foreground;
 }
+
+.menuItem {
+  @apply flex flex-row items-center p-2 rounded-lg gap-2 cursor-pointer hover:bg-background-hover transition-all;
+}
+
+.separator {
+  @apply h-px w-full bg-border
+}
