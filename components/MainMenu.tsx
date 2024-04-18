@@ -2,13 +2,14 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import { IoHeart, IoHeartOutline, IoHome, IoHomeOutline, IoSearch, IoSearchOutline } from "react-icons/io5"
+import { IoHeart, IoHeartOutline, IoHome, IoHomeOutline, IoMenu, IoSearch, IoSearchOutline } from "react-icons/io5"
 import { usePathname } from "next/navigation"
 import { useState, useRef, useEffect } from "react"
 import { FaFacebookMessenger, FaInstagram, FaPlusSquare, FaRegPlusSquare } from "react-icons/fa"
 import MainMenuSearchBar from "./MainMenuSearchBar"
 import { MdExplore, MdOutlineExplore } from "react-icons/md"
 import { PiMessengerLogo, PiMessengerLogoFill, PiVideo, PiVideoFill } from "react-icons/pi"
+import MainMenuMore from "./MainMenuMore"
 
 
 
@@ -26,9 +27,11 @@ import { PiMessengerLogo, PiMessengerLogoFill, PiVideo, PiVideoFill } from "reac
 export default function MainMenu() {
 
     const searchDivRef = useRef<HTMLDivElement>(null)
+    const moreDivRef = useRef<HTMLDivElement>(null)
 
     const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false)
     const [isHalf, setIsHalf] = useState<boolean>(false)
+    const [isMoreOpen, setIsMoreOpen] = useState<boolean>(true)
 
     const pathname = usePathname()
 
@@ -48,6 +51,22 @@ export default function MainMenu() {
             document.removeEventListener('mousedown', handleOutSideClick)
         }
     }, [searchDivRef])
+
+    useEffect(() => {
+        const handleOutSideClick = ((e: MouseEvent) => {
+            if (e) {
+                if (!moreDivRef.current?.contains(e.target as Node)) {
+                    setIsMoreOpen(false)
+                }
+            } 
+        })
+
+        document.addEventListener('mousedown', handleOutSideClick)
+
+        return () => {
+            document.removeEventListener('mousedown', handleOutSideClick)
+        }
+    }, [moreDivRef])
     return(
         <div className="w-[350px] flex flex-col p-5 max-h-screen h-screen overflow-auto border-r border-r-border">
             {!isHalf? (
@@ -61,7 +80,7 @@ export default function MainMenu() {
                     className="object-contain"
                     />
                 </Link>
-                <div className="flex flex-col gap-4">
+                <div className="flex flex-col gap-2">
                     <Link href={'/'} className={`menuItem ${pathname == '/'? 'font-semibold': ''}`}>
                         {pathname == '/'? (
                             <IoHome className="text-2xl"/>
@@ -119,12 +138,22 @@ export default function MainMenu() {
                         Create
                     </Link>
                 </div>
+                <div ref={moreDivRef} className="mt-auto">
+                    <button className="menuItem w-full" onClick={(() => setIsMoreOpen((isOpen) => !isOpen))}>
+                        <IoMenu className="text-2xl"/>
+                        More
+                    </button>
+                    {isMoreOpen && (
+                        <MainMenuMore/>
+                    )}
+                </div>
+                
                 </>
             ): (
                 <>
-                <div className="flex flex-row">
+                <div className={`flex flex-row transition-all`}>
                     <div className="flex flex-col gap-2">
-                        <Link href={'/'} className="menuItem my-6">
+                        <Link href={'/'} className="menuItem mt-6 mb-4">
                             <FaInstagram className="text-2xl"/>
                         </Link>
                         <Link href={'/'} className="menuItem text-2xl">
@@ -141,8 +170,43 @@ export default function MainMenu() {
                                 <IoSearchOutline/>
                             )}
                         </button>
+                        <Link href={'/explore'} className={`menuItem ${pathname.startsWith('/explore')? 'font-semibold': ''}`}>
+                            {pathname.startsWith('/explore')? (
+                                <MdExplore className="text-2xl"/>
+                            ): (
+                                <MdOutlineExplore className="text-2xl"/>
+                            )}
+                        </Link>
+                        <Link href={'/reels'} className={`menuItem ${pathname.startsWith('/reels')? 'font-semibold': ''}`}>
+                            {pathname.startsWith('/reels')? (
+                                <PiVideoFill className="text-2xl"/>
+                            ): (
+                                <PiVideo className="text-2xl"/>
+                            )}
+                        </Link>
+                        <Link href={'/messenger'} className={`menuItem ${pathname.startsWith('/messenger')? 'font-semibold': ''}`}>
+                            {pathname.startsWith('/messenger')? (
+                                <PiMessengerLogoFill className="text-2xl"/>
+                            ): (
+                                <PiMessengerLogo className="text-2xl"/>
+                            )}
+                        </Link>
+                        <Link href={'/notifications'} className={`menuItem ${pathname.startsWith('/notifications')? 'font-semibold': ''}`}>
+                            {pathname.startsWith('/notifications')? (
+                                <IoHeart className="text-2xl"/>
+                            ): (
+                                <IoHeartOutline className="text-2xl"/>
+                            )}
+                        </Link>
+                        <Link href={'/create'} className={`menuItem ${pathname.startsWith('/create')? 'font-semibold': ''}`}>
+                            {pathname.startsWith('/create')? (
+                                <FaPlusSquare className="text-2xl"/>
+                            ): (
+                                <FaRegPlusSquare className="text-2xl"/>
+                            )}
+                        </Link>
                     </div>
-                    <div ref={searchDivRef} className="flex flex-col flex-1 p-2">
+                    <div ref={searchDivRef} className={`flex flex-col flex-1 p-2`}>
                         <label className="text-2xl font-semibold">Search</label>
                         <MainMenuSearchBar/>
                         <span className="separator"/>
