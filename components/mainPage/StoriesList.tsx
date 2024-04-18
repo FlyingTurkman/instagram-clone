@@ -2,6 +2,7 @@
 
 import Link from "next/link"
 import { useSearchParams } from "next/navigation"
+import StorySlider from "./StorySlider"
 
 
 
@@ -27,6 +28,7 @@ export default function StoriesList() {
                 </Link>
             </div>
             <span className="separator"/>
+            <StorySlider/>
         </div>
     )
 }
