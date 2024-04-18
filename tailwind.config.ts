@@ -17,7 +17,7 @@ const config: Config = {
         "background": "#060606",
         "background-secondary": "#1a1a1a",
         "primary-foreground": "#fff",
-        "secondary-foreground": "#333",
+        "secondary-foreground": "#ddd",
         "border": "#ddd",
         "background-hover": "#1a1a1a"
       }

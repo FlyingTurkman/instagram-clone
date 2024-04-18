@@ -31,7 +31,7 @@ export default function MainMenu() {
 
     const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false)
     const [isHalf, setIsHalf] = useState<boolean>(false)
-    const [isMoreOpen, setIsMoreOpen] = useState<boolean>(true)
+    const [isMoreOpen, setIsMoreOpen] = useState<boolean>(false)
 
     const pathname = usePathname()
 
