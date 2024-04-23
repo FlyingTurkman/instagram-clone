@@ -68,7 +68,7 @@ export default function MainMenu() {
         }
     }, [moreDivRef])
     return(
-        <div className="w-[350px] flex flex-col p-5 max-h-screen h-screen overflow-auto border-r border-r-border">
+        <div className="w-[350px] flex sticky top-0 left-0 bg-background z-50 flex-col p-5 max-h-screen h-screen overflow-auto border-r border-r-border">
             {!isHalf? (
                 <>
                 <Link href={'/'} className="w-28 my-6">
