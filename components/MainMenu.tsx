@@ -5,7 +5,7 @@ import Link from "next/link"
 import { IoHeart, IoHeartOutline, IoHome, IoHomeOutline, IoMenu, IoSearch, IoSearchOutline } from "react-icons/io5"
 import { usePathname } from "next/navigation"
 import { useState, useRef, useEffect } from "react"
-import { FaFacebookMessenger, FaInstagram, FaPlusSquare, FaRegPlusSquare } from "react-icons/fa"
+import { FaInstagram, FaPlusSquare, FaRegPlusSquare } from "react-icons/fa"
 import MainMenuSearchBar from "./MainMenuSearchBar"
 import { MdExplore, MdOutlineExplore } from "react-icons/md"
 import { PiMessengerLogo, PiMessengerLogoFill, PiVideo, PiVideoFill } from "react-icons/pi"
@@ -35,6 +35,7 @@ export default function MainMenu() {
 
     const pathname = usePathname()
 
+    // Search section outside click function
     useEffect(() => {
 
         const handleOutSideClick = ((e: MouseEvent) => {
@@ -52,6 +53,7 @@ export default function MainMenu() {
         }
     }, [searchDivRef])
 
+    // More section outside click function
     useEffect(() => {
         const handleOutSideClick = ((e: MouseEvent) => {
             if (e) {
