@@ -12,7 +12,7 @@ export default function Home() {
       <div className="flex basis-1/5 flex-shrink-0">
 
       </div>
-      <div className="flex flex-col items-center basis-3/5 flex-shrink-0">
+      <div className="flex flex-col items-center gap-6 basis-3/5 flex-shrink-0">
         <StoriesList/>
         <Posts/>
       </div>
