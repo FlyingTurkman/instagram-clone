@@ -20,14 +20,16 @@ import { TbDots } from "react-icons/tb"
 export default function PostCard() {
     return(
         <div className="flex flex-col gap-2 max-w-[470px] w-full border-b border-b-border py-2">
-            <div className="flex flex-row items-center px-2 justify-between">
+
+            {/* Header section */}
+            <header className="flex flex-row items-center px-2 justify-between">
                 <div className="flex flex-row gap-2 items-center">
                     <div className="flex items-center justify-center w-8 h-8 rounded-full bg-secondary-foreground">
                         <IoPerson className="text-xl"/>
                     </div>
                     <div className="flex flex-col">
                         <div className="flex flex-row gap-2 items-center">
-                            {/* TODO: URL Güncellenecek */}
+                            {/* TODO: Link href needs update */}
                             <Link href={'/'} className="font-semibold text-sm">
                                 Username
                             </Link>
@@ -40,10 +42,14 @@ export default function PostCard() {
                 <button>
                     <TbDots className="text-xl"/>
                 </button>
-            </div>
+            </header>
+
+            {/* Multimedia section */}
             <div className="flex items-center justify-center aspect-square w-full bg-secondary-foreground rounded">
                 <FaImage className="text-9xl text-background"/>
             </div>
+
+            {/* Buttons section */}
             <div className="flex flex-row items-center justify-between">
                 <div className="flex flex-row items-center gap-2">
                     <button>
@@ -57,6 +63,8 @@ export default function PostCard() {
                     <FaRegBookmark className="text-2xl"/>
                 </button>
             </div>
+
+            {/* Likes section */}
             <div className="flex flex-row gap-2 items-center">
                 <div className="relative">
                     <div className="flex absolute top-1/2 left-0 -translate-y-1/2 w-4 h-4 aspect-square bg-secondary-foreground rounded-full items-center justify-center border border-background">
@@ -71,9 +79,13 @@ export default function PostCard() {
                 </div>
                 <button className="text-sm font-semibold ml-8">123 likes</button>
             </div>
+
+            {/* Comments section */}
             <button className="text-sm text-start text-secondary-foreground">
                 See comments
             </button>
+
+            {/* Comment input */}
             <div className="flex flex-row items-center gap-2">
                 <input className="flex flex-1 bg-transparent text-sm" placeholder="Add comment..."/>
                 <button>
