@@ -39,7 +39,7 @@ declare global {
     namespace NodeJS {
         interface ProcessEnv {
             mongoUri: string,
-            database: string
+            dbName: string
         }
     }
 }
