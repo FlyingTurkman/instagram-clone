@@ -23,7 +23,6 @@ import MainMenuMore from "./MainMenuMore"
 
 
 
-
 export default function MainMenu() {
 
     const searchDivRef = useRef<HTMLDivElement>(null)
@@ -70,7 +69,7 @@ export default function MainMenu() {
         }
     }, [moreDivRef])
     return(
-        <div className="w-[350px] flex sticky top-0 left-0 bg-background z-50 flex-col p-5 max-h-screen h-screen overflow-auto border-r border-r-border">
+        <div className={`w-[350px] ${pathname.startsWith('/auth')? 'hidden': 'flex'} sticky top-0 left-0 bg-background z-50 flex-col p-5 max-h-screen h-screen border-r border-r-border`}>
             {!isHalf? (
                 <>
                 <Link href={'/'} className="w-28 my-6">

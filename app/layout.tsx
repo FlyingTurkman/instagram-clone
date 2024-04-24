@@ -13,12 +13,14 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({
-  children,
+  children
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
 
   const user = await userCheckByToken()
+
+
 
   return (
     <html lang="en">
